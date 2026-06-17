@@ -1,0 +1,19 @@
+
+> my-app@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+  - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 1738ms
+ ○ Compiling / ...
+ ✓ Compiled / in 4.9s (550 modules)
+ ✓ Compiled in 591ms (259 modules)
+ GET / 200 in 5538ms
+ GET / 200 in 42ms
+ ✓ Compiled /login in 396ms (520 modules)
+ GET /login 200 in 565ms
+ ✓ Compiled /register in 243ms (522 modules)
+ GET /register 200 in 304ms

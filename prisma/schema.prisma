@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  SELLER
+  BUYER
+}
+
+enum VerificationStatus {
+  PENDING
+  VERIFIED
+}
+
+model User {
+  id                  String             @id @default(uuid())
+  email               String             @unique
+  password_hash       String
+  role                Role
+  company             Company?
+  created_at          DateTime           @default(now())
+  updated_at          DateTime           @updatedAt
+}
+
+model Company {
+  id                  String             @id @default(uuid())
+  user_id             String             @unique
+  user                User               @relation(fields: [user_id], references: [id])
+  company_name        String
+  legal_doc_url       String?
+  // Location represented as lat, lng for simplicity in Prisma schema without PostGIS extension for now
+  latitude            Float?
+  longitude           Float?
+  verification_status VerificationStatus @default(PENDING)
+  created_at          DateTime           @default(now())
+  updated_at          DateTime           @updatedAt
+}
